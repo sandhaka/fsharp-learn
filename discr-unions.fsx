@@ -26,7 +26,6 @@ let unionValue2 = U (B true)
 // Is much better to explicitly qualify the type:
 personValue = MixedType.P { first = "John"; last = "Smith" }
 
-
 // Matching and deconstructing
 let matcher x =
     match x with
@@ -43,9 +42,18 @@ let matcher x =
             printfn $"  Integer: %d{i}"
         | B b ->
             printfn $"  Boolean: %b{b}"
+
 // Use the matcher function
 matcher personValue
 matcher tupleValue
 matcher listValue
 matcher unionValue
 matcher unionValue2
+
+// Empty cases
+type Result =
+    | Success
+    | Failure of string
+    
+let result = Success
+let result2 = Failure "Something went wrong"
